@@ -15,7 +15,7 @@ C:\Users\[USERNAME]\AppData\Local\Discord\app-[LATEST_VERSION]\modules\discord_v
 - Find `settings.json` under:
 
 ```
-C:\Users\[USERNAME]\AppData\Roaming\discord
+C:\Users\[USERNAME]\AppData\Roaming\discord\settings.json
 ```
 
 - Add `"DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING": true` to the object so that it looks something like this:
