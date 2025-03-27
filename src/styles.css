@@ -1,0 +1,68 @@
+div:not(#_)[class*="channelTextArea_"] {
+  /* fix the awkward bottom margin of the chat input bar */
+  margin-bottom: var(--space-xs);
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] {
+  /* shrink the width of the server sidebar */
+  width: 60px;
+
+  & div[class*="itemsContainer_"] > div {
+    /* shrink gap spacing between server icons */
+    gap: 4px !important;
+  }
+
+  & div[aria-label="Servers"] {
+    /* shrink gap spacing between server icons */
+    gap: 4px !important;
+
+    & > div[class*="wrapper_"] {
+      span:not(#_)[class*="expandedFolderBackground_"] {
+        /* make the folder background easier to see */
+        background-color: #ffffff20;
+        mix-blend-mode: difference;
+        /* fix background layout for folders */
+        left: 6px;
+      }
+
+      & > ul {
+        /* shrink gap spacing between server icons in folders */
+        gap: 4px !important;
+        /* fix height issue for folders */
+        height: unset !important;
+      }
+    }
+  }
+
+  & div[class*="listItem_"] {
+    /* shrink the width of icon element */
+    width: 60px;
+
+    & mask {
+      /* hide the server icon mask */
+      display: none;
+    }
+    & div[class*="wrapper_"]:has(svg),
+    & foreignObject,
+    & foreignObject > div,
+    & foreignObject > div > div,
+    & foreignObject > div > img {
+      /* fix all the sizes of the icon layout */
+      width: 48px;
+      height: 48px;
+    }
+    & svg {
+      /* remove the offset in svg */
+      top: unset;
+      left: unset;
+    }
+    & foreignObject > div {
+      /* return the server icons back to circles when they are not selected */
+      clip-path: circle(50%);
+    }
+    & foreignObject > div[class*="selected_"] {
+      /* give rounded rectangle to selected icons */
+      clip-path: inset(0 round 16px);
+    }
+  }
+}

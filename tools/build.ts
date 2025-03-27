@@ -1,7 +1,7 @@
 import { Path } from '../src/lib/ericchase/Platform/FilePath.js';
 import { Builder } from './lib/Builder.js';
 import { Processor_BasicWriter } from './lib/processors/FS-BasicWriter.js';
-import { Processor_TypeScript_GenericCompiler } from './lib/processors/TypeScript-GenericCompiler.js';
+import { Processor_TypeScript_GenericBundler } from './lib/processors/TypeScript-GenericBundler.js';
 import { Step_Bun_Run } from './lib/steps/Bun-Run.js';
 import { Step_CleanDirectory } from './lib/steps/FS-CleanDirectory.js';
 import { Step_Format } from './lib/steps/FS-Format.js';
@@ -24,14 +24,14 @@ builder.setBeforeProcessingSteps();
 // The processors are run for every file that added them during every
 // processing phase.
 builder.setProcessorModules(
-  Processor_TypeScript_GenericCompiler(['**/*.ts'], [], { target: 'node' }),
-  Processor_BasicWriter(['**/*.ts'], [Path(builder.dir.lib, '/**/*')]),
+  Processor_TypeScript_GenericBundler({ sourcemap: 'none', target: 'browser' }),
+  Processor_BasicWriter(['**/*{.module,.script}{.ts,.tsx,.jsx}'], []),
   //
 );
 
 // These steps are run after each processing phase.
 builder.setAfterProcessingSteps(
-  Step_InjectMods(),
+  Step_InjectMods(Path(builder.dir.src, 'mod.module.tsx')),
   //
 );
 
