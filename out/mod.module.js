@@ -137,13 +137,33 @@ nav:not(#_)[aria-label="Servers sidebar"] {
     }
   }
 }
+
+/* fix a seemingly incorrect height of the user's sidebar button */
+section:not(#_)[aria-label="User area"] > div[class*="container_"] {
+  height: 52px;
+}
 `;
 
 // src/mod.module.tsx
 function setup() {
   if (document && "adoptedStyleSheets" in document) {
+    let styles = styles_default;
+    switch (getTheme()) {
+      case "light":
+        styles = `html:not(#_){--text-normal: #000000;}
+
+${styles}`;
+        break;
+      case "dark":
+      case "darker":
+      case "midnight":
+        styles = `html:not(#_){--text-normal: #EEEEEE;}
+
+${styles}`;
+        break;
+    }
     const stylesheet = new CSSStyleSheet;
-    stylesheet.replaceSync(styles_default);
+    stylesheet.replaceSync(styles);
     document.adoptedStyleSheets.push(stylesheet);
     console.log("Mod--Discord-Client: Client mods applied.");
   } else {
@@ -159,3 +179,10 @@ observer.subscribe((element) => {
     viewBox.baseVal.y = 0;
   }
 });
+function getTheme() {
+  const ThemeStore = localStorage.getItem("ThemeStore");
+  if (ThemeStore !== null) {
+    return JSON.parse(ThemeStore)._state.theme;
+  }
+  return "dark";
+}

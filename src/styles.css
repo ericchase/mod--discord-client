@@ -66,3 +66,8 @@ nav:not(#_)[aria-label="Servers sidebar"] {
     }
   }
 }
+
+/* fix a seemingly incorrect height of the user's sidebar button */
+section:not(#_)[aria-label="User area"] > div[class*="container_"] {
+  height: 52px;
+}

@@ -22,11 +22,14 @@ class CStep_InjectMods implements Step {
     if (discordpath !== undefined) {
       // modify the module file
       for (const rawpath of await globScan(builder.platform, discordpath, ['app*/modules/discord_voice-1/discord_voice/index.js'], [], true)) {
-        const path = Path(rawpath);
-        const text = await builder.platform.File.readText(path);
-        const previous_index = text.indexOf(modheader);
-        const original_text = previous_index !== -1 ? text.slice(0, previous_index) : text;
-        await builder.platform.File.writeText(Path(path), `${original_text}${modheader}${await builder.getFile(this.modpath).getText()}`);
+        try {
+          const path = Path(rawpath);
+          const text = await builder.platform.File.readText(path);
+          const previous_index = text.indexOf(modheader);
+          const original_text = previous_index !== -1 ? text.slice(0, previous_index) : text;
+          await builder.platform.File.writeText(Path(path), `${original_text}${modheader}${await builder.getFile(this.modpath).getText()}`);
+          this.channel.log('Mods are seemingly injected.');
+        } catch (error) {}
       }
     }
   }
