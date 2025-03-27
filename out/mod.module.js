@@ -142,6 +142,21 @@ nav:not(#_)[aria-label="Servers sidebar"] {
 section:not(#_)[aria-label="User area"] > div[class*="container_"] {
   height: 52px;
 }
+
+div:not(#_)[class*="channelTextArea_"] {
+  /* enlarge the buttons on right side of chat input box */
+  & div[class*="contents_"],
+  & div[class*="lottieIcon_"],
+  & div[class*="spriteContainer_"],
+  & svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  & div[class*="spriteContainer_"] > div[class*="sprite_"] {
+    scale: calc(1 / 0.75);
+    transform-origin: top left;
+  }
+}
 `;
 
 // src/mod.module.tsx
