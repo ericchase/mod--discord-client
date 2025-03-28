@@ -1,0 +1,1 @@
+- Add capability to toggle individual styles and scripts.

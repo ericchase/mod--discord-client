@@ -28,7 +28,7 @@ class CStep_InjectMods implements Step {
           const previous_index = text.indexOf(modheader);
           const original_text = previous_index !== -1 ? text.slice(0, previous_index) : text;
           await builder.platform.File.writeText(Path(path), `${original_text}${modheader}${await builder.getFile(this.modpath).getText()}`);
-          this.channel.log('Mods are seemingly injected.');
+          this.channel.log('Mods injected:', path.raw);
         } catch (error) {}
       }
     }
