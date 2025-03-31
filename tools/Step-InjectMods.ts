@@ -9,14 +9,17 @@ const logger = Logger(Step_InjectMods.name);
 const modheader = '\n\n\n//**// CLIENT MOD START //**//\n\n\n';
 const discordpath = await FindDiscordPath();
 
-export function Step_InjectMods(modpath: CPath | string): Step {
-  return new CStep_InjectMods(Path(modpath));
+export function Step_InjectMods(modpath: CPath | string, remove = false): Step {
+  return new CStep_InjectMods(Path(modpath), remove);
 }
 
 class CStep_InjectMods implements Step {
   channel = logger.newChannel();
 
-  constructor(readonly modpath: CPath) {}
+  constructor(
+    readonly modpath: CPath,
+    readonly remove = false,
+  ) {}
   async onRun(builder: BuilderInternal): Promise<void> {
     if (discordpath !== undefined) {
       // modify the module file
@@ -26,7 +29,11 @@ class CStep_InjectMods implements Step {
           const text = await builder.platform.File.readText(path);
           const previous_index = text.indexOf(modheader);
           const original_text = previous_index !== -1 ? text.slice(0, previous_index) : text;
-          await builder.platform.File.writeText(Path(path), `${original_text}${modheader}${await builder.getFile(this.modpath).getText()}`);
+          if (this.remove === true) {
+            await builder.platform.File.writeText(Path(path), original_text);
+          } else {
+            await builder.platform.File.writeText(Path(path), `${original_text}${modheader}${await builder.getFile(this.modpath).getText()}`);
+          }
           this.channel.log('Mods injected:', path.raw);
         } catch (error) {}
       }
