@@ -1,5 +1,5 @@
 import { ElementAddedObserver } from './lib/ericchase/Platform/Web/DOM/MutationObserver/ElementAdded.js';
-import imported_stylesheet from './styles.css' assert { type: 'text' };
+import imported_stylesheet from './styles.compiled.css' assert { type: 'text' };
 
 // Note: If you change the Appearance > Theme setting, restart Discord for font
 // colors to update.

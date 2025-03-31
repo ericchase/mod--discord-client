@@ -8,7 +8,7 @@ If you encounter any problems and need help, submit an issue or send me an email
 
 ## TypeScript Library and Template Project
 
-For more information about my TypeScript library and template projects, please visit:
+For information about my TypeScript library and template projects, please visit:
 
 - https://github.com/ericchase-library/ts-library
 - https://github.com/ericchase-library/ts-template

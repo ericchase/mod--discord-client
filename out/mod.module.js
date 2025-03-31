@@ -68,101 +68,98 @@ class ElementAddedObserver {
   }
 }
 
-// src/styles.css
-var styles_default = `div:not(#_)[class*="channelTextArea_"] {
-  /* fix the awkward bottom margin of the chat input bar */
+// src/styles.compiled.css
+var styles_compiled_default = `div:not(#_)[class*=channelTextArea_] {
   margin-bottom: var(--space-xs);
 }
 
 nav:not(#_)[aria-label="Servers sidebar"] {
-  /* shrink the width of the server sidebar */
-  width: 60px;
-
-  & div[class*="itemsContainer_"] > div {
-    /* shrink gap spacing between server icons */
-    gap: 4px !important;
-  }
-
-  & div[aria-label="Servers"] {
-    /* shrink gap spacing between server icons */
-    gap: 4px !important;
-
-    & > div[class*="wrapper_"] {
-      span:not(#_)[class*="expandedFolderBackground_"] {
-        /* make the folder background easier to see */
-        background-color: #ffffff20;
-        mix-blend-mode: difference;
-        /* fix background layout for folders */
-        left: 6px;
-      }
-
-      & > ul {
-        /* shrink gap spacing between server icons in folders */
-        gap: 4px !important;
-        /* fix height issue for folders */
-        height: unset !important;
-      }
-    }
-  }
-
-  & div[class*="listItem_"] {
-    /* shrink the width of icon element */
-    width: 60px;
-
-    & mask {
-      /* hide the server icon mask */
-      display: none;
-    }
-    & div[class*="wrapper_"]:has(svg),
-    & foreignObject,
-    & foreignObject > div,
-    & foreignObject > div > div,
-    & foreignObject > div > img {
-      /* fix all the sizes of the icon layout */
-      width: 48px;
-      height: 48px;
-    }
-    & svg {
-      /* remove the offset in svg */
-      top: unset;
-      left: unset;
-    }
-    & foreignObject > div {
-      /* return the server icons back to circles when they are not selected */
-      clip-path: circle(50%);
-    }
-    & foreignObject > div[class*="selected_"] {
-      /* give rounded rectangle to selected icons */
-      clip-path: inset(0 round 16px);
-    }
-  }
+  width: 64px;
 }
 
-/* fix a seemingly incorrect height of the user's sidebar button */
-section:not(#_)[aria-label="User area"] > div[class*="container_"] {
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=listItem_] {
+  width: 64px;
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=itemsContainer_] > div {
+  gap: 8px !important;
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div[aria-label=Servers] {
+  gap: 8px !important;
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div[aria-label=Servers] > div[class*=wrapper_] span[class*=expandedFolderBackground_] {
+  background-color: rgba(255, 255, 255, 0.1254901961);
+  mix-blend-mode: difference;
+  left: 6px;
+  width: 52px;
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div[aria-label=Servers] > div[class*=wrapper_] > ul {
+  gap: 8px !important;
+  height: unset !important;
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=listItem_] mask {
+  display: none;
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=listItem_] div[class*=wrapper_]:has(svg),
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=listItem_] foreignObject,
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=listItem_] foreignObject > div,
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=listItem_] foreignObject > div > div,
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=listItem_] foreignObject > div > img {
+  width: 48px;
+  height: 48px;
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=listItem_] svg {
+  top: unset;
+  left: unset;
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=listItem_] foreignObject > div {
+  clip-path: circle(50%);
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=listItem_] foreignObject > div[class*=selected_] {
+  clip-path: inset(0 round 16px);
+}
+
+section:not(#_)[aria-label="User area"] > div[class*=container_] {
   height: 52px;
 }
 
-div:not(#_)[class*="channelTextArea_"] {
-  /* enlarge the buttons on right side of chat input box */
-  & div[class*="contents_"],
-  & div[class*="lottieIcon_"],
-  & div[class*="spriteContainer_"],
-  & svg {
-    width: 24px !important;
-    height: 24px !important;
-  }
-  & div[class*="spriteContainer_"] > div[class*="sprite_"] {
-    scale: calc(1 / 0.75);
-    transform-origin: top left;
-  }
+div:not(#_)[class*=channelTextArea_] div[class*=contents_],
+div:not(#_)[class*=channelTextArea_] div[class*=lottieIcon_],
+div:not(#_)[class*=channelTextArea_] div[class*=spriteContainer_],
+div:not(#_)[class*=channelTextArea_] svg {
+  width: 24px !important;
+  height: 24px !important;
 }
-`;
+
+div:not(#_)[class*=channelTextArea_] div[class*=spriteContainer_] > div[class*=sprite_] {
+  scale: 1.3333333333;
+  transform-origin: top left;
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=folderIconWrapper_]:has(> div[class*=closedFolderIconWrapper_]) {
+  background-color: #5865f2 !important;
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div:has(> div[class*=folderIconWrapper_] > div[class*=closedFolderIconWrapper_]) {
+  clip-path: inset(0 round 16px);
+}
+
+nav:not(#_)[aria-label="Servers sidebar"] div[class*=folderIconWrapper_] > div[class*=closedFolderIconWrapper_] > div {
+  border-radius: 50% !important;
+}`;
 
 // src/mod.module.tsx
 function setup() {
   if (document && "adoptedStyleSheets" in document) {
-    let styles = styles_default;
+    let styles = styles_compiled_default;
     switch (getTheme()) {
       case "light":
         styles = `html:not(#_){--text-normal: #000000;}

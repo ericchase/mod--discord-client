@@ -1,0 +1,107 @@
+$blurple: #5865f2;
+$gap: 8px;
+
+// fix the awkward bottom margin of the chat input bar
+div:not(#_)[class*='channelTextArea_'] {
+  margin-bottom: var(--space-xs);
+}
+
+// shrink the width of the server sidebar
+nav:not(#_)[aria-label='Servers sidebar'] {
+  width: 64px;
+}
+
+// shrink the width of icon element
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='listItem_'] {
+  width: 64px;
+}
+
+// shrink gap spacing between server icons
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='itemsContainer_'] > div {
+  gap: $gap !important;
+}
+
+// shrink gap spacing between server icons
+nav:not(#_)[aria-label='Servers sidebar'] div[aria-label='Servers'] {
+  gap: $gap !important;
+}
+
+// make the folder background easier to see
+// fix background layout for folders
+nav:not(#_)[aria-label='Servers sidebar'] div[aria-label='Servers'] > div[class*='wrapper_'] span[class*='expandedFolderBackground_'] {
+  background-color: rgba(255, 255, 255, 0.1254901961);
+  mix-blend-mode: difference;
+  left: 6px;
+  width: 52px;
+}
+
+// shrink gap spacing between server icons in folders
+// fix height issue for folders
+nav:not(#_)[aria-label='Servers sidebar'] div[aria-label='Servers'] > div[class*='wrapper_'] > ul {
+  gap: $gap !important;
+  height: unset !important;
+}
+
+// hide the server icon mask
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='listItem_'] mask {
+  display: none;
+}
+
+// fix all the sizes of the icon layout
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='listItem_'] div[class*='wrapper_']:has(svg),
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='listItem_'] foreignObject,
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='listItem_'] foreignObject > div,
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='listItem_'] foreignObject > div > div,
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='listItem_'] foreignObject > div > img {
+  width: 48px;
+  height: 48px;
+}
+
+// remove the offset in svg
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='listItem_'] svg {
+  top: unset;
+  left: unset;
+}
+
+// return the server icons back to circles when they are not selected
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='listItem_'] foreignObject > div {
+  clip-path: circle(50%);
+}
+
+// give rounded rectangle to selected icons
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='listItem_'] foreignObject > div[class*='selected_'] {
+  clip-path: inset(0 round 16px);
+}
+
+// fix a seemingly incorrect height of the user's sidebar button
+section:not(#_)[aria-label='User area'] > div[class*='container_'] {
+  height: 52px;
+}
+
+// enlarge the buttons on right side of chat input box
+div:not(#_)[class*='channelTextArea_'] div[class*='contents_'],
+div:not(#_)[class*='channelTextArea_'] div[class*='lottieIcon_'],
+div:not(#_)[class*='channelTextArea_'] div[class*='spriteContainer_'],
+div:not(#_)[class*='channelTextArea_'] svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+div:not(#_)[class*='channelTextArea_'] div[class*='spriteContainer_'] > div[class*='sprite_'] {
+  scale: 1.3333333333;
+  transform-origin: top left;
+}
+
+// ## Closed Folders
+
+// give original discord dark purple color background
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='folderIconWrapper_']:has(> div[class*='closedFolderIconWrapper_']) {
+  background-color: $blurple !important;
+}
+// make rounded rectangle
+nav:not(#_)[aria-label='Servers sidebar'] div:has(> div[class*='folderIconWrapper_'] > div[class*='closedFolderIconWrapper_']) {
+  clip-path: inset(0 round 16px);
+}
+// make mini icons circular
+nav:not(#_)[aria-label='Servers sidebar'] div[class*='folderIconWrapper_'] > div[class*='closedFolderIconWrapper_'] > div {
+  border-radius: 50% !important;
+}

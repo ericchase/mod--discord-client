@@ -7,7 +7,7 @@ import { BuilderInternal, Step } from './lib/Builder.js';
 const logger = Logger(Step_InjectMods.name);
 
 const modheader = '\n\n\n//**// CLIENT MOD START //**//\n\n\n';
-const discordpath = await findDiscordPath();
+const discordpath = await FindDiscordPath();
 
 export function Step_InjectMods(modpath: CPath | string): Step {
   return new CStep_InjectMods(Path(modpath));
@@ -17,8 +17,7 @@ class CStep_InjectMods implements Step {
   channel = logger.newChannel();
 
   constructor(readonly modpath: CPath) {}
-  async end(builder: BuilderInternal) {}
-  async run(builder: BuilderInternal) {
+  async onRun(builder: BuilderInternal): Promise<void> {
     if (discordpath !== undefined) {
       // modify the module file
       for (const rawpath of await globScan(builder.platform, discordpath, ['app*/modules/discord_voice-1/discord_voice/index.js'], [], true)) {
@@ -35,7 +34,7 @@ class CStep_InjectMods implements Step {
   }
 }
 
-async function findDiscordPath() {
+async function FindDiscordPath() {
   const platform = await getPlatformProvider('bun');
 
   // Windows
