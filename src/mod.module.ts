@@ -1,4 +1,5 @@
 import { ElementAddedObserver } from './lib/ericchase/Platform/Web/DOM/MutationObserver/ElementAdded.js';
+import { InjectCSS } from './lib/ericchase/Platform/Web/InjectCSS.js';
 import imported_stylesheet from './styles.compiled.css' assert { type: 'text' };
 
 // Note: If you change the Appearance > Theme setting, restart Discord for font
@@ -19,9 +20,7 @@ function setup() {
         break;
     }
     // inject the styles
-    const stylesheet = new CSSStyleSheet();
-    stylesheet.replaceSync(styles);
-    document.adoptedStyleSheets.push(stylesheet);
+    InjectCSS(styles);
     console.log('Mod--Discord-Client: Client mods applied.');
   } else {
     console.error('Mod--Discord-Client: Failed to apply client mods.');

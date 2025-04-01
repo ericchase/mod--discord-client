@@ -4,7 +4,7 @@ import { Step_InjectMods } from './Step-InjectMods.js';
 
 const builder = new Builder();
 builder.setCleanUpSteps(
-  Step_InjectMods(Path(builder.dir.src, 'mod.module.tsx'), true), //
+  Step_InjectMods(Path(builder.dir.src, 'mod.module.ts'), true), //
 );
 
 await builder.start();

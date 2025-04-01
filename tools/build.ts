@@ -35,7 +35,7 @@ builder.setProcessorModules(
 
 // These steps are run after each processing phase.
 builder.setAfterProcessingSteps(
-  Step_InjectMods(Path(builder.dir.src, 'mod.module.tsx')),
+  Step_InjectMods(Path(builder.dir.src, 'mod.module.ts')),
   //
 );
 

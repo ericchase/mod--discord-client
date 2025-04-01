@@ -68,6 +68,14 @@ class ElementAddedObserver {
   }
 }
 
+// src/lib/ericchase/Platform/Web/InjectCSS.ts
+function InjectCSS(styles) {
+  const stylesheet = new CSSStyleSheet;
+  stylesheet.replaceSync(styles);
+  document.adoptedStyleSheets.push(stylesheet);
+  return stylesheet;
+}
+
 // src/styles.compiled.css
 var styles_compiled_default = `div:not(#_)[class*=channelTextArea_] {
   margin-bottom: var(--space-xs);
@@ -156,7 +164,7 @@ nav:not(#_)[aria-label="Servers sidebar"] div[class*=folderIconWrapper_] > div[c
   border-radius: 50% !important;
 }`;
 
-// src/mod.module.tsx
+// src/mod.module.ts
 function setup() {
   if (document && "adoptedStyleSheets" in document) {
     let styles = styles_compiled_default;
@@ -174,9 +182,7 @@ ${styles}`;
 ${styles}`;
         break;
     }
-    const stylesheet = new CSSStyleSheet;
-    stylesheet.replaceSync(styles);
-    document.adoptedStyleSheets.push(stylesheet);
+    InjectCSS(styles);
     console.log("Mod--Discord-Client: Client mods applied.");
   } else {
     console.error("Mod--Discord-Client: Failed to apply client mods.");
