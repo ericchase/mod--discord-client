@@ -1,8 +1,8 @@
-import { CPath, Path } from '../src/lib/ericchase/Platform/FilePath.js';
-import { globScan } from '../src/lib/ericchase/Platform/Glob_Utility.js';
-import { getPlatformProvider } from '../src/lib/ericchase/Platform/PlatformProvider.js';
-import { Logger } from '../src/lib/ericchase/Utility/Logger.js';
-import { BuilderInternal, Step } from './lib/Builder.js';
+import { CPath, Path } from '../../../src/lib/ericchase/Platform/FilePath.js';
+import { globScan } from '../../../src/lib/ericchase/Platform/Glob_Utility.js';
+import { getPlatformProvider } from '../../../src/lib/ericchase/Platform/PlatformProvider.js';
+import { Logger } from '../../../src/lib/ericchase/Utility/Logger.js';
+import { BuilderInternal, Step } from '../../lib/Builder.js';
 
 const logger = Logger(Step_InjectMods.name);
 

@@ -70,10 +70,13 @@ class ElementAddedObserver {
 
 // src/lib/ericchase/Platform/Web/InjectCSS.ts
 function InjectCSS(styles) {
-  const stylesheet = new CSSStyleSheet;
-  stylesheet.replaceSync(styles);
-  document.adoptedStyleSheets.push(stylesheet);
-  return stylesheet;
+  if (document && "adoptedStyleSheets" in document) {
+    const stylesheet = new CSSStyleSheet;
+    stylesheet.replaceSync(styles);
+    document.adoptedStyleSheets.push(stylesheet);
+    return stylesheet;
+  }
+  return;
 }
 
 // src/styles.compiled.css
