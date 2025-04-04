@@ -17,7 +17,7 @@
     "dev": "bun run tools/build.ts --watch",
     "lint": "biome lint --error-on-warnings --write",
     "pull": "bun run tools/pull.ts",
-    "mod": "bun run tools/mod.ts",
+    "mod": "bun run tools/build.ts",
     "unmod": "bun run tools/unmod.ts"
   },
   "type": "module"
