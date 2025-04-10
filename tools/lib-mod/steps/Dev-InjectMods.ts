@@ -23,7 +23,7 @@ class CStep_InjectMods implements Step {
   async onRun(builder: BuilderInternal): Promise<void> {
     if (discordpath !== undefined) {
       // modify the module file
-      for (const rawpath of await globScan(builder.platform, discordpath, ['app*/modules/discord_voice-1/discord_voice/index.js'], [], true)) {
+      for (const rawpath of await globScan(builder.platform, discordpath, ['app*/modules/discord_voice-*/discord_voice/index.js'], [], true)) {
         try {
           const path = Path(rawpath);
           const text = await builder.platform.File.readText(path);
