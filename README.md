@@ -1,3 +1,13 @@
+## Archive Notes
+
+I decided to uninstall the Discord desktop client due to the constant updates and annoying Windows specific issues like resetting audio settings. I had the idea of building my own wrapper around the Discord web client using something like Electron/Tauri, but there would be a number of limitations and potential problems that I don't have solutions for, yet.
+
+Therefore; I set up a portable browser and now just use the Discord web client with modifications injected via the Violentmonkey and Stylus extensions. Once the browser is properly set up, it's much easier to apply custom scripts and styles this way, while also pretending that I'm still using a desktop app.
+
+tldr: https://github.com/ericchase/mod--discord-web-client
+
+---
+
 ## About
 
 https://github.com/ericchase/mod--discord-client
